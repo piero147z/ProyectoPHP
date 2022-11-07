@@ -1,0 +1,17 @@
+{% extends "plantilla.twig" %}
+
+{% block tittle %}Index{% endblock %}
+
+{% block content %}
+    <a href="#" class="btn btn-primary">Create</a>
+
+
+    {% for u in users %}
+
+    <p>{{ u.id }}</p>
+    <p>{{ u.email }}</p>
+    <p>{{ u.password }}</p>
+
+    {% endfor %}
+
+{% endblock %}
