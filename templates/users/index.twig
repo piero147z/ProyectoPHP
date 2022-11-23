@@ -1,17 +1,51 @@
-{% extends "plantilla.twig" %}
+{# Enlazar este fichero con la plantilla correspondiente #}
+{% extends "layouts/admin.twig" %}
 
-{% block tittle %}Index{% endblock %}
+{% block title %}Index{% endblock %}
 
 {% block content %}
-    <a href="#" class="btn btn-primary">Create</a>
 
-
-    {% for u in users %}
-
-    <p>{{ u.id }}</p>
-    <p>{{ u.email }}</p>
-    <p>{{ u.password }}</p>
-
-    {% endfor %}
-
+    <!-- cart -->
+	<div class="cart-section mt-150 mb-150">
+		<div class="container">
+         <a href="{{ URL }}controller=users&action=create" >
+         <p><input type="submit" value="Crear"></p>
+         </a>
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table">
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+									<th class="product-remove"></th>
+									<th class="product-image">Imagen</th>
+									<th class="product-name">Nombre</th>
+									<th class="product-price">Apellidos</th>
+									<th class="product-quantity">Email</th>
+									<th class="product-total"></th>
+								</tr>
+							</thead>
+							<tbody>
+                             {% for u in users %}
+								<tr class="table-body-row">
+									<td class="product-remove">{{ u.id }}</td>
+									<td class="product-image"><img src="assets/img/avaters/usuario.png" style="border-radius:50%"alt=""></td>
+									<td class="product-name">{{ u.nombre }}</td>
+									<td class="product-price">{{ u.apellidos }}</td>
+									<td class="product-quantity">{{ u.email }}</td>
+									<td class="product-total"> 
+                                        <a href="{{ URL }}controller=users&action=edit&id={{ u.id }}" class="btn btn-secondary">Edit</a>
+                                        <a href="{{ URL }}controller=users&action=show&id={{ u.id }}" class="btn btn-success">Show</a>
+                                        <a href="{{ URL }}controller=users&action=delete&id={{ u.id }}" class="btn btn-danger">Delete</a>
+                                    </td>
+								</tr>
+                                {% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end cart -->    
 {% endblock %}
